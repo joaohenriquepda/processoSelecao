@@ -28,6 +28,32 @@ class Graphic extends Component{
   this.average = this.average.bind(this)
 }
 
+serviceGetUSD(date){
+  return axios.get('http://api.fixer.io/'+date+'?base=USD')
+}
+
+//This function searching data in API
+getInfor(date){
+  this.serviceGetUSD(date)
+  .then(data => {
+    this.setHighestValue(data.data)
+    this.setLowestValue(data.data)
+    this.addElements(data.data)
+}).catch(error => {
+    console.log('Error message: ' + error )
+});
+}
+
+componentDidMount() {
+  let moment = extendMoment(Moment);
+  let range = moment.range('2009-08-07', '2011-11-17');
+  let days = Array.from(range.by('day'));
+  days.map(x =>{
+        this.getInfor(x.format('YYYY-MM-DD'))
+  })
+}
+
+
 render() {
   return (
     <div>
