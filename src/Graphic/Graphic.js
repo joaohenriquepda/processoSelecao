@@ -1,9 +1,10 @@
 import React, {Component } from  'react'
 
 import axios from 'axios'
+import DatePicker from 'react-datepicker'
 import {Chart} from 'react-google-charts'
-import {Form, Button, Container, Icon, Label,
-  Input, Menu } from 'semantic-ui-react'
+import {Button, Container, Label,
+  Input } from 'semantic-ui-react'
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 
@@ -51,6 +52,44 @@ componentDidMount() {
   days.map(x =>{
         this.getInfor(x.format('YYYY-MM-DD'))
   })
+}
+setHighestValue(data){
+  if(data.rates.BRL > this.state.hValue){
+    this.setState({hValue: data.rates.BRL})
+    let value = [data.date, data.rates.BRL]
+    this.setState({highestValue:value})
+  }
+}
+
+
+setLowestValue(data){
+  if(data.rates.BRL < this.state.lValue){
+    this.setState({lValue: data.rates.BRL})
+    let value = [data.date, data.rates.BRL]
+    this.setState({lowestValue:value})
+  }
+}
+
+addElements(data){
+  let array = this.state.data
+  let sumArray = this.state.sumAverage
+  let cotation = [data.date,data.rates.BRL]
+  array.push(cotation)
+  sumArray.push(cotation)
+  this.setState({data:array})
+  this.setState({sumAverage:sumArray})
+}
+
+
+average(){
+  let qtd = this.state.sumAverage.length
+  let sum = 0
+  let list = this.state.sumAverage
+  list.map(x=>{
+    sum = sum +x[1]
+  })
+  let totalAverage = sum/qtd
+  this.setState({average:totalAverage})
 }
 
 

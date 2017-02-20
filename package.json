@@ -11,6 +11,7 @@
     "chart.js": "^1.1.1",
     "moment-range": "^3.0.2",
     "react": "^15.4.2",
+    "react-chart-all": "^1.0.4",
     "react-datepicker": "^0.41.1",
     "react-dom": "^15.4.2",
     "react-google-charts": "^1.4.2",
