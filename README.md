@@ -33,19 +33,17 @@ npm install -g npm
 ```
 sudo apt-get instal git-core
 sudo apt-get install git-all
-
 ```
 
 ##Iniciando o projeto
-
-#git clone https://github.com/joaohenriquepda/processoSelecao
-
 ```
-# cd processoSelecao
-# npm install
-# npm start
+git clone https://github.com/joaohenriquepda/processoSelecao
+cd processoSelecao
+npm install
+npm start
 ```
 
 ##Tela
+Após a execução dos comandos acima acesse em seu browser localhost:3000 e visualize
 
 ![alt tag](https://raw.githubusercontent.com/joaohenriquepda/processoSelecao/master/tela.png)
