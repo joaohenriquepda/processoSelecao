@@ -47,7 +47,7 @@ getInfor(date){
 
 componentDidMount() {
   let moment = extendMoment(Moment);
-  let range = moment.range('2009-08-07', '2011-11-17');
+  let range = moment.range('2011-08-07', '2011-11-17');
   let days = Array.from(range.by('day'));
   days.map(x =>{
         this.getInfor(x.format('YYYY-MM-DD'))
